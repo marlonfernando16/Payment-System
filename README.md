@@ -12,10 +12,10 @@ esses dados se perderiam caso uma dessas aplicações estivesses fora do ar e fo
 ## Testes JMeter
 
 * ### Fila Durável:
-![Screenshot](/src/main/resources/static/durable.jpg)
+![](/src/main/resources/static/durable.png)
 
 * ### Fila Não Durável:
-![Screenshot](/src/main/resources/static/nodurable.png)
+![](/src/main/resources/static/nodurable.png)
 
 ## Feito Com:
 
