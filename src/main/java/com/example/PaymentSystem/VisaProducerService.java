@@ -13,7 +13,7 @@ public class VisaProducerService {
 		connectionFactory.setHost("localhost");
 		connectionFactory.setPort(5672);
 
-		String NOME_FILA = "send_bandeira_cliente";
+		String NOME_FILA = "send_bandeira_banco";
 		try(           
 				Connection connection = connectionFactory.newConnection();
 				Channel channel = connection.createChannel()) {

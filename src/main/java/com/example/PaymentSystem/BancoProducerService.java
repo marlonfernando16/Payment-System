@@ -18,7 +18,7 @@ public class BancoProducerService {
         try (Connection connection = connectionFactory.newConnection();Channel channel = connection.createChannel()) {
         	Gson g = new Gson();
             Banco b = (Banco)g.fromJson(pagamento_json, Banco.class);
-        	((com.rabbitmq.client.Channel) channel).queueDeclare(b.getBandeira(), true, false, false, null);
+        	((com.rabbitmq.client.Channel) channel).queueDeclare(b.getBandeira(),false, false, false, null);
             ((com.rabbitmq.client.Channel) channel).basicPublish("",b.getBandeira(), MessageProperties.PERSISTENT_TEXT_PLAIN, pagamento_json.getBytes());
             System.out.println("Enviando mensagem para fila do visa: " + pagamento_json);
 

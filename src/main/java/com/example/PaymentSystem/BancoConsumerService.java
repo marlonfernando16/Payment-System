@@ -8,12 +8,12 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
-public class ClientConsumerService {
+public class BancoConsumerService {
 
-	public static String FILA_BANDEIRA_CLIENTE = "send_bandeira_cliente";
+	public static String FILA_BANDEIRA_BANCO = "send_bandeira_banco";
 	
 	public static void main(String[] args) throws Exception {
-        System.out.println("Inicio Consumidor Cliente");
+        System.out.println("Inicio Consumidor Banco");
         
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");
@@ -21,14 +21,14 @@ public class ClientConsumerService {
         Channel canal = connection.createChannel();
         DeliverCallback callback = (consumerTag, delivery) -> {
             String msg = new String(delivery.getBody());
-            System.out.println(msg + "deu bom");
+            System.out.println(msg + "Bandeira processa e envia para o banco de volta.");
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msg, Banco.class);
             System.out.println(b);
-           
+            
         };
-        canal.queueDeclare(FILA_BANDEIRA_CLIENTE, true, false, false, (Map)null);
-        canal.basicConsume(FILA_BANDEIRA_CLIENTE, true, callback, (consumerTag) -> {
+        canal.queueDeclare(FILA_BANDEIRA_BANCO, true, false, false, (Map)null);
+        canal.basicConsume(FILA_BANDEIRA_BANCO, true, callback, (consumerTag) -> {
         });
         System.out.println("Fim Consumidor Cliente");
     }

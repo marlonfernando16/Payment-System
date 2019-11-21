@@ -28,7 +28,7 @@ public class VisaConsumerService {
         
         DeliverCallback callback = (consumerTag, delivery) -> {
             String msgJson = new String(delivery.getBody());
-            System.out.println("Recebendo mensagem da fila sendBancoVisa: " + msgJson);
+            System.out.println("Recebendo mensagem da fila: " + msgJson);
             
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);

@@ -25,7 +25,7 @@ public static void main(String[] args) throws Exception {
         
         DeliverCallback callback = (consumerTag, delivery) -> {
             String msgJson = new String(delivery.getBody());
-            System.out.println("Recebendo mensagem da fila visa: " + msgJson);
+            System.out.println("Recebendo mensagem da fila: " + msgJson);
             
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
